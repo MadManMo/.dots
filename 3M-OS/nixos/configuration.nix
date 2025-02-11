@@ -100,6 +100,7 @@
     image = pkgs.fetchurl {
       url = "https://github.com/MadManMo/wallpaper/blob/main/wallpaper/redblack1.jpg";
       sha256 = "";
+    };
     base16Scheme = {
     #scheme: "caroline"
     #author: "ed (https://codeberg.org/ed)"
