@@ -1,5 +1,7 @@
 -- init.lua
 
+-- I'll figure out how to make this better another day. For now... This should work.
+
 -- Leader key setup
 -- Defines the global and local leader keys for keybindings (space in this case)
 vim.g.mapleader = " "
@@ -73,13 +75,12 @@ local menu_padding = string.rep(" ", 32)
 
 -- Define a custom highlight for the shortcut keys (you can customize this)
 vim.api.nvim_set_hl(0, 'ShortcutKey', {
-  fg = '#FF00FF',  -- Pink color, change to any color you want
-  italic = false,     -- Makes the shortcut bold (optional)
+  fg = '#FF00FF',
+  italic = false,
 })
 
 -- mini.starter: A lightweight dashboard when opening Neovim startup
 require("mini.starter").setup({
-  -- Header: ASCII art or simple text displayed at the top
   header = [[
     =================     ===============     ===============   ========  ========
     \\ . . . . . . .\\   //. . . . . . .\\   //. . . . . . .\\  \\. . .\\// . . //
@@ -181,9 +182,9 @@ require("mini.starter").setup({
               local padding = string.rep(" ", shortcut_column - display_length)
               local key = query_keys:sub(item_idx, item_idx)
 
-              -- Apply the custom highlight for the shortcut (removes '[]')
+              -- Apply the custom highlight for the shortcut
               unit.string = unit.string .. padding .. key
-                 vim.cmd("highlight ShortcutKey guifg=#FF00FF") -- Ensure highlight is applied
+                 vim.cmd("highlight ShortcutKey guifg=#FF00FF") -- This section may not work. It may depend on themeing or terminal. I'll get back to this maybe.
             end
           end
         end
@@ -250,7 +251,7 @@ vim.keymap.set("n", "<leader>ty", ":term yazi<CR>", { desc = "Open yazi in termi
 local lspconfig = require("lspconfig")
 local servers = {
   "pyright",           -- Python LSP for type checking and completion
-  "ts_ls",          -- JS/TS LSP, also helps with JSON in some cases
+  "ts_ls",             -- JS/TS LSP, also helps with JSON in some cases
   "clangd",            -- C/C++ LSP for code navigation and diagnostics
   "html",              -- HTML LSP for web development
   "jdtls",             -- Java LSP (mapped to java-language-server in Nix)
