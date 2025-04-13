@@ -47,7 +47,6 @@ return {
 		return dashboard
 	end,
 	config = function(_, dashboard)
-		-- close Lazy and re-open when the dashboard is ready
 		if vim.o.filetype == "lazy" then
 			vim.cmd.close()
 			vim.api.nvim_create_autocmd("User", {
@@ -65,7 +64,6 @@ return {
           local stats = require("lazy").stats()
           local plugin_count = stats.loaded
           local nvim_version = vim.version().major .. "." .. vim.version().minor .. "." .. vim.version().patch
-          -- Assign the footer value and redraw
           dashboard.section.footer.val = " ᴳᵒ ᵃʷᵃʸ  " .. nvim_version .. " 󱐋 " .. plugin_count .. "  𝘗𝘭𝘶𝘨𝘪𝘯𝘴 𝘓𝘰𝘢𝘥𝘦𝘥"
           pcall(vim.cmd.AlphaRedraw)
           end,
